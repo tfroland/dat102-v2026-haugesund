@@ -1,14 +1,11 @@
 package no.hvl.dat102.tabellstabel;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.EmptyStackException;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class TabellStabelTest {
 	
@@ -18,7 +15,12 @@ class TabellStabelTest {
 
 	@BeforeEach
 	void nullstill() {
-		//TODO
+		stabel0 = new TabellStabel<>();
+		stabel1 = new TabellStabel<>();
+		stabel2 = new TabellStabel<>();
+		stabel1.push("Pomerans");
+		stabel2.push("Dragefrukt");
+		stabel2.push("Physalis");
 	}
 	
 	/*
@@ -37,46 +39,58 @@ class TabellStabelTest {
 	
 	@Test
 	void enNyStabelSkalVaereTom() {
-		//TODO
+		assertTrue(stabel0.isEmpty());
 	}
 	
 	@Test
 	void enStabelMedEttEllerFlereElementerSkalIkkeVaereTom() {
-		//TODO
+		assertFalse(stabel1.isEmpty());
+		assertFalse(stabel2.isEmpty());
 	}
 	
 	@Test
 	void pushSkalLeggeElementetPaaToppenAvStabelen() {
-		//TODO
+		stabel1.push("Banan");
+		assertEquals("Banan", stabel1.peek());
 	}
 	
 	@Test
 	void peekPaaTomStabelSkalGiEmptyStackException() {
-		//TODO
+		assertThrows(EmptyStackException.class, () -> stabel0.peek());
 	}
 	
 	@Test
 	void peekPaaIkkeTomStabelSkalReturnereToppelementet() {
-		//TODO
+		assertEquals("Pomerans", stabel1.peek());
+		assertEquals("Physalis", stabel2.peek());
 	}
 	
 	@Test
 	void peekPaaIkkeTomStabelSkalIkkeEndreStabelensInnhold() {
-		//TODO
+		assertEquals(stabel1.peek(), stabel1.peek());
+		stabel2.peek();
+		assertEquals(stabel2.peek(), "Physalis");
 	}
 	
 	@Test
 	void popPaaTomStabelSkalGiEmptyStackException() {
-		//TODO
+		assertThrows(EmptyStackException.class, () -> stabel0.pop());
 	}
 	
 	@Test
 	void popPaaIkkeTomStabelSkalFjerneOgReturnereToppelementet() {
-		//TODO
+		String peekElement = stabel2.peek();
+		String popElement = stabel2.pop();
+		String peekElement2 = stabel2.peek();
+
+		assertTrue(peekElement.equals(popElement));
+		assertNotEquals(peekElement, peekElement2);
+		assertEquals(popElement, "Physalis");
 	}
 	
 	@Test
 	void clearSkalTommeStabelen() {
-		//TODO
+		stabel2.clear();
+		assertTrue(stabel2.isEmpty());
 	}
 }
