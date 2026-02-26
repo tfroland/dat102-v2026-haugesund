@@ -23,14 +23,14 @@ public class Driver {
 		System.out.println("\n\nisEmpty() returns " + myDeque.isEmpty() + "\n");
 
 		System.out.println("Add to front and back of deque to get\n" + "Joe Jess Jim Jill Jane Jerry\n");
-		myDeque.addToFront("Jim");
-		myDeque.addToFront("Jess");
+		myDeque.addToFront("Gimli");
+		myDeque.addToFront("Legolas");
 
-		myDeque.addToBack("Jill");
-		myDeque.addToBack("Jane");
+		myDeque.addToBack("Gandalf");
+		myDeque.addToBack("Frodo");
 
-		myDeque.addToFront("Joe");
-		myDeque.addToBack("Jerry");
+		myDeque.addToFront("Sam");
+		myDeque.addToBack("Galadriel");
 
 		System.out.println("\nisEmpty() returns " + myDeque.isEmpty() + "\n");
 
