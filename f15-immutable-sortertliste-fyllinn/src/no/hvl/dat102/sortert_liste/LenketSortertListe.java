@@ -33,10 +33,13 @@ public class LenketSortertListe<T extends Comparable<? super T>> implements Sort
 	 */
 	private Node lenkeEtterInnsetting(T newEntry, Node p) {
 
-		// TODO Gjøre denne sammen! Rekursiv metode for å oppdatere og returnere
-		//      lenken med innsatt newEntry.
-
-		return null;
+		// Basistilfelle: Vi har funnet plassen (enten slutten av listen eller riktig sorteringspunkt)
+		if(p == null || newEntry.compareTo(p.data) <= 0){
+			return new Node(newEntry, p);
+		} else {
+			p.next = lenkeEtterInnsetting(newEntry, p.next);
+			return p;
+		}
 	}
 
 	/* ------------------------------------------------------------------------ */

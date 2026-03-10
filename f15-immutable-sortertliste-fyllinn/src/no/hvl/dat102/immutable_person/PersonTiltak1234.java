@@ -2,12 +2,12 @@ package no.hvl.dat102.immutable_person;
 
 import java.util.Objects;
 
-public class PersonTiltak1234 {
+public final class PersonTiltak1234 {
 
 	//TODO - Gjennomføre tiltak 1..4 for å gjøre denne ikke-muterbar
 
-	public NavnMuterbar navn;
-	public int fodselsaar;
+	private final NavnMuterbar navn;
+	private final int fodselsaar;
 
 	public PersonTiltak1234(NavnMuterbar navn, int fodselsaar) {
 		this.navn = navn;
@@ -18,16 +18,8 @@ public class PersonTiltak1234 {
 		return navn;
 	}
 
-	public void setNavn(NavnMuterbar navn) {
-		this.navn = navn;
-	}
-
 	public int getFodselsaar() {
 		return fodselsaar;
-	}
-
-	public void setFodselsaar(int fodselsaar) {
-		this.fodselsaar = fodselsaar;
 	}
 
 	@Override

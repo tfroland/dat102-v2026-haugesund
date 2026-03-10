@@ -10,12 +10,12 @@ public final class PersonTiltak123456 {
 	private final int fodselsaar;
 	
 	public PersonTiltak123456(NavnMuterbar navn, int fodselsaar) {
-		this.navn = navn;
+		this.navn = new NavnMuterbar(navn.getFornavn(), navn.getEtternavn());
 		this.fodselsaar = fodselsaar;
 	}
 	
 	public NavnMuterbar getNavn() {
-		return navn;
+		return new NavnMuterbar(navn.getFornavn(), navn.getEtternavn());
 	}
 
 	public int getFodselsaar() {
