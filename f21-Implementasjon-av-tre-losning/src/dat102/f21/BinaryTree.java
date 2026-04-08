@@ -27,19 +27,38 @@ public class BinaryTree<T> implements BinaryTreeADT<T>, Iterable<T> {
     }
 
     private int getCount(BinaryTreeNode<T> t) {
-        // blir fylt inn i forelesning
-        return 0;
+        // Basistilfelle
+        //if(!t.hasLeftChild() && !t.hasRightChild()){
+        //    return 1;
+        //}
+
+        // Alternativ basis som er mer effektiv
+        if (t == null){
+            return 0;
+        }
+
+        // Rekursivt kall
+        return 1 + getCount(t.getLeft()) + getCount(t.getRight());
     }
 
     @Override
     public int getCountAtLevel(int k) {
-        // blir fylt inn i forelesning
-        return 0;
+        return getCountAtLevel(root, k);
     }
 
     private int getCountAtLevel(BinaryTreeNode<T> t, int k) {
-        // blir fylt inn i forelesning
-        return 0;
+        // Basis: Tomt tre
+        if (t == null){
+            return 0;
+        }
+
+        // Basis: vi er på rett nivå, teller noden
+        if (k == 1){
+            return 1;
+        }
+
+        // Rekursivt kall
+        return getCountAtLevel(t.getLeft(), k-1) + getCountAtLevel(t.getRight(), k-1);
     }
 
     @Override
@@ -48,12 +67,16 @@ public class BinaryTree<T> implements BinaryTreeADT<T>, Iterable<T> {
     }
 
     private int getHeight(BinaryTreeNode<T> t) {
+        // Basistilfelle
         if (t == null) {
             return 0;
         }
 
+        // Rekursjon
         int leftHeight = getHeight(t.getLeft());
         int rightHeight = getHeight(t.getRight());
+
+        //return 1+ leftHeight + rightHeight;
         return 1 + Math.max(leftHeight, rightHeight);
     }
 
@@ -214,7 +237,29 @@ public class BinaryTree<T> implements BinaryTreeADT<T>, Iterable<T> {
     @Override
     public Iterator<T> getPostorderIterator() {
         // blir fylt inn på forelesning
-        return null;
+        return new PostorderIterator();
+    }
+
+    private class PostorderIterator implements Iterator<T>{
+        private Stack<BinaryTreeNode<T>> nodeStack;
+        private BinaryTreeNode<T> currentNode;
+        private BinaryTreeNode<T> lastVisited;
+
+        public PostorderIterator(){
+            nodeStack = new Stack();
+            currentNode = root;
+            lastVisited = null;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public T next() {
+            return null;
+        }
     }
 
 
